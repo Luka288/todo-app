@@ -1,7 +1,49 @@
 nav {
-  .headerLogin {
-    text-decoration: none;
-    color: white;
-    font-size: large;
+  div.container-fluid {
+    div#navbarNavAltMarkup {
+      div.navbar-nav {
+        width: 100%;
+        justify-content: space-between;
+        .wrapper {
+          display: flex;
+        }
+
+        .loginRegister {
+          display: flex;
+          gap: 30px;
+          .headerLogin {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: large;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    div.container-fluid {
+      div#navbarNavAltMarkup {
+        div.navbar-nav {
+          .wrapper {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .loginRegister {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            .headerLogin {
+            }
+          }
+        }
+      }
+    }
   }
 }
