@@ -116,13 +116,59 @@ main {
   }
 
   .todoCards {
-    padding-top: 3%;
+    padding-top: 9%;
     width: 100%;
     height: 100%;
 
     .headerText {
       text-align: center;
       text-transform: capitalize;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  main {
+    section.wrapper {
+      .profileInfo {
+        height: 450px;
+        .imgInfos {
+          display: flex;
+          flex-direction: column;
+
+          .imgContainer {
+            display: flex;
+            justify-content: center;
+          }
+          img {
+          }
+        }
+
+        .moreInfo {
+          .midContainer {
+            padding-top: 20px;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    section.todo {
+      .todoInputs {
+        form {
+          .titleInput {
+            width: 230px;
+          }
+
+          .description {
+            width: 230px;
+          }
+        }
+      }
+    }
+
+    .todoCards {
+      padding-top: 25%;
     }
   }
 }
