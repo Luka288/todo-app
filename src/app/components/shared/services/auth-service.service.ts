@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { authEverset } from '../consts';
+import { authInter } from '../interfaces/auth-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class AuthServiceService {
   readonly authUrl = authEverset;
 
 
-  register(){
-
+  register(user: authInter){
+   return this.http.post<authInter>(`${this.authUrl}/auth/sign_up`, user)
   }
 
   login(){
