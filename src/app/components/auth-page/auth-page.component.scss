@@ -1,1 +1,39 @@
-@import "@angular/material/prebuilt-themes/magenta-violet.css";
+main {
+  width: 100%;
+  height: 100%;
+  background-color: #4c516d;
+  color: whitesmoke;
+
+  section.authContainer {
+    .wrapper {
+      width: 100%;
+      padding-top: 150px;
+      display: flex;
+      justify-content: space-between;
+
+      form {
+        width: 50%;
+        mat-form-field {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+
+          .reg {
+            display: flex;
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+  }
+
+  .sideContainer {
+    padding-left: 50px;
+    img {
+      width: 500px;
+    }
+    .textContainer {
+      width: 500px;
+    }
+  }
+}
