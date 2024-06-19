@@ -15,7 +15,11 @@
           </h2>
         </div>
       </div>
-      <form class="example-form form-style" [formGroup]="signUpForm">
+      <form
+        class="example-form form-style"
+        [formGroup]="signUpForm"
+        type="submit"
+      >
         <mat-tab-group color="primary">
           <mat-tab label="Login" class="firstTab" color="primary">
             <mat-form-field class="example-full-width">
@@ -50,6 +54,7 @@
               <mat-error>Please enter more then 8 characters</mat-error>
               }
             </mat-form-field>
+            <button mat-flat-button>Login</button>
           </mat-tab>
           <mat-tab label="Register" class="reg">
             <mat-form-field class="example-full-width">
@@ -116,8 +121,9 @@
               }@if(signUpForm.get("password")?.hasError('minLength')){
               <mat-error>Please enter more then 8 characters</mat-error>
               }
-            </mat-form-field></mat-tab
-          >
+            </mat-form-field>
+            <button mat-flat-button>Register</button>
+          </mat-tab>
         </mat-tab-group>
       </form>
     </div>

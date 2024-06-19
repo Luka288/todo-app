@@ -4,11 +4,13 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import {MatInputModule} from '@angular/material/input';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @Component({
   selector: 'app-auth-page',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, MatInputModule, CommonModule, ReactiveFormsModule, MatTabsModule],
+  imports: [RouterModule, RouterOutlet, MatInputModule, CommonModule, ReactiveFormsModule, MatTabsModule, MatButtonModule],
   templateUrl: './auth-page.component.html',
   styleUrl: './auth-page.component.scss',  
 })
