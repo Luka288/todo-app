@@ -1,8 +1,19 @@
+::ng-deep .mdc-tab__text-label {
+  color: white !important;
+}
+
+::ng-deep .mat-mdc-tab-body-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+}
+
 main {
   width: 100%;
   height: 100%;
-  background-color: #4c516d;
-  color: whitesmoke;
+  background-color: #151e3d;
+  color: white;
 
   section.authContainer {
     .wrapper {
@@ -34,6 +45,10 @@ main {
     }
     .textContainer {
       width: 500px;
+
+      h2 {
+        font-weight: 300;
+      }
     }
   }
 }
