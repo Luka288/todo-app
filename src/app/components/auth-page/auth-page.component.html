@@ -1,0 +1,23 @@
+<main>
+  <section class="authContainer">
+    <form class="example-form" [formGroup]="signUpForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>First name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Enter your name"
+          [formGroup]="signUpForm"
+          formControlName="firstName"
+        />
+        @if(signUpForm.get('firstName')?.hasError("required")){
+        <mat-error>First name is <strong>required</strong></mat-error>
+        }@if(signUpForm.get('firstName')?.hasError("maxLength")){
+        <mat-hint>Please enter less then 16 characters</mat-hint>
+        }@if(signUpForm.get('firstName')?.hasError("minLength")){
+        <mat-error>Please enter more then 2 characters</mat-error>
+        }
+      </mat-form-field>
+    </form>
+  </section>
+</main>
