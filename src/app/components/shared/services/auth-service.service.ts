@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit, inject } from '@angular/core';
-import { authEverset } from '../consts';
+import { authEverset, loginEverest } from '../consts';
 import { authInter, excludeUser, user } from '../interfaces/auth-interface';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, pipe, tap } from 'rxjs';
 import { LocalStorageKeys } from '../enums';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtTokens } from '../interfaces';
+import { Router } from '@angular/router';
+import { SweetAlertService } from './sweet-alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +15,12 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthServiceService  {
   private readonly http = inject(HttpClient);
   private readonly jwtHelperService = inject(JwtHelperService)
+  private readonly route = inject(Router)
+  private readonly sweetAlert = inject(SweetAlertService);
+
 
   readonly authUrl = authEverset;
+  readonly loginUrl = loginEverest;
 
   constructor(){
     this.init();
@@ -33,6 +40,23 @@ export class AuthServiceService  {
 
   register(user: authInter){
     return this.http.post<authInter>("https://api.everrest.educata.dev/auth/sign_up", user);
+  }
+
+  login(email: string, password: string){
+   return this.http.post<JwtTokens>(`${this.loginUrl}`, {email, password}).pipe(
+      tap((token) => {
+        this.accessToken = token.access_token;
+        this.refreshToken = token.refresh_token;
+        this.user = this.jwtHelperService.decodeToken(token.access_token)
+      })
+    )
+  }
+  logOut(){
+    localStorage.removeItem(LocalStorageKeys.AccessToken);
+    localStorage.removeItem(LocalStorageKeys.RefreshToken);
+    this.route.navigateByUrl('');
+    this.sweetAlert.toast("Signed out", 'success', 'See you next time !')
+    this.user = null;
   }
 
   readonly #user$ = new BehaviorSubject<user | null>(null)
@@ -61,5 +85,4 @@ export class AuthServiceService  {
   set refreshToken(token: string){
     localStorage.setItem(LocalStorageKeys.RefreshToken, token)
   }
-
 }

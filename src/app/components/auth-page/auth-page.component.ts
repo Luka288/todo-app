@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import {MatInputModule} from '@angular/material/input';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import {MatTabChangeEvent, MatTabsModule} from '@angular/material/tabs';
@@ -8,7 +8,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { authInter } from '../shared/interfaces/auth-interface';
 import { AuthServiceService } from '../shared/services/auth-service.service';
 import { SweetAlertService } from '../shared/services/sweet-alert.service';
-import { tap } from 'rxjs';
+import { EMPTY, catchError, tap } from 'rxjs';
+import { routes } from '../../app.routes';
 
 
 @Component({
@@ -22,6 +23,7 @@ export default class AuthPageComponent {
   private readonly fb = inject(FormBuilder)
   private readonly auth = inject(AuthServiceService)
   private readonly sweetAlert = inject(SweetAlertService)
+  private readonly route = inject(Router)
 
 
   tabIndex = 0;
@@ -83,5 +85,27 @@ export default class AuthPageComponent {
       this.sweetAlert.toast("Wrong", 'error', 'no');
       return
     }
+  }
+
+  signUp(){
+    const email = this.signUpForm.value.email;
+    const password = this.signUpForm.value.password;
+
+    if(!email || !password){
+      this.sweetAlert.toast("Error", "error", "Check email or password")
+      return
+    }
+
+    this.auth.login(email, password).pipe(
+      tap(userToken => {
+        this.route.navigateByUrl('')
+        this.sweetAlert.toast("Signed in ! ", "success", "success")
+        this.signUpForm.reset()
+      }),
+      catchError((err) => {
+        this.sweetAlert.alert('Check email or password', 'error', `Are you registerd?`)
+        return EMPTY;
+      }),
+    ).subscribe()
   }
 }
