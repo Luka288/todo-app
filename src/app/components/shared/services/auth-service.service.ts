@@ -4,21 +4,31 @@ import { authEverset } from '../consts';
 import { authInter, excludeUser, user } from '../interfaces/auth-interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LocalStorageKeys } from '../enums';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService implements OnInit {
+export class AuthServiceService  {
   private readonly http = inject(HttpClient);
-  // private readonly JwtHelperService = inject(JwtHelperService)
+  private readonly jwtHelperService = inject(JwtHelperService)
 
   readonly authUrl = authEverset;
 
+  constructor(){
+    this.init();
+  }
+
+  init(){
+    if(this.accessToken && this.refreshToken) {
+      this.user = this.jwtHelperService.decodeToken(this.accessToken)
+    }
+  }
 
   ngOnInit(): void {
-    // if(this.accessToken && this.refreshToken){
-    //   this.user = this.JwtHelperService.decodeToken(this.accessToken)
-    // }
+    if(this.accessToken && this.refreshToken){
+      this.user = this.jwtHelperService.decodeToken(this.accessToken)
+    }
   }
 
   register(user: authInter){
