@@ -1,3 +1,4 @@
+import { JwtResponse } from "./index";
 
 export interface authInter {
     firstName: string;
@@ -13,5 +14,14 @@ export interface authInter {
     _id: string;
 }
 
+export type excludeUser = 'password'
 
 export type UserGender = "MALE" | "FEMALE" | "OTHER";
+
+export interface user extends Omit<authInter, excludeUser>, JwtResponse{
+    _id: string;
+    role: role;
+    verified: boolean;
+}
+
+export type role = 'default' | 'moderator' | 'admin'

@@ -20,7 +20,7 @@
         [formGroup]="signUpForm"
         type="submit"
       >
-        <mat-tab-group color="primary">
+        <mat-tab-group color="primary" [selectedIndex]="tabIndex">
           <mat-tab label="Login" class="firstTab" color="primary">
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
@@ -122,7 +122,21 @@
               <mat-error>Please enter more then 8 characters</mat-error>
               }
             </mat-form-field>
-            <button mat-flat-button>Register</button>
+            <mat-form-field class="example-full-width">
+              <mat-label>Phone number</mat-label>
+              <input
+                type="phone"
+                matInput
+                placeholder="Enter your phone"
+                [formGroup]="signUpForm"
+                formControlName="phone"
+              />@if(signUpForm.get("phone")?.hasError('required')){
+              <mat-error>Phone is <strong>required</strong></mat-error>
+              }@if(signUpForm.get("phone")?.hasError('maxLength')){
+              <mat-error>Please enter more then 2 characters</mat-error>
+              }
+            </mat-form-field>
+            <button mat-flat-button (click)="register()">Register</button>
           </mat-tab>
         </mat-tab-group>
       </form>
