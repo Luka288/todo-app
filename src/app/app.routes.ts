@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CanActivate, CanUserAuth } from './components/shared/services/auth-service.service';
 
 export const routes: Routes = [
     {
@@ -9,12 +10,14 @@ export const routes: Routes = [
     {
         path: 'auth',
         loadComponent: () => import('./components/auth-page/auth-page.component'),
-        title: 'Todo | Authentication'
+        title: 'Todo | Authentication',
+        canActivate: [CanUserAuth],
     },
     {
         path: 'profile',
         loadComponent: () => import('./components/profile/profile.component'),
-        title: 'Todo | Profile'
+        title: 'Todo | Profile',
+        canActivate: [CanActivate],
     },
     {
         path: '**',

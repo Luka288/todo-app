@@ -28,6 +28,8 @@ export default class AuthPageComponent {
 
   tabIndex = 0;
 
+  logErr = '';
+
   readonly signUpForm = this.fb.group({
     firstName: new FormControl('', [
       Validators.required,
@@ -103,7 +105,8 @@ export default class AuthPageComponent {
         this.signUpForm.reset()
       }),
       catchError((err) => {
-        this.sweetAlert.alert('Check email or password', 'error', `Are you registerd?`)
+        err = this.logErr
+        this.sweetAlert.alert('Check email or password', 'error', `Seems like you are not registered`)
         return EMPTY;
       }),
     ).subscribe()

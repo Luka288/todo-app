@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, pipe, tap } from 'rxjs';
 import { LocalStorageKeys } from '../enums';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { JwtTokens } from '../interfaces';
-import { Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import { SweetAlertService } from './sweet-alert.service';
 
 @Injectable({
@@ -85,4 +85,36 @@ export class AuthServiceService  {
   set refreshToken(token: string){
     localStorage.setItem(LocalStorageKeys.RefreshToken, token)
   }
+
+  isUserLoged(){
+    if(this.jwtHelperService.isTokenExpired(this.accessToken)){
+      this.route.navigateByUrl('auth')
+      return false;
+    }
+
+    return true
+  }
+
+  canUserAuth(){
+    if(this.accessToken || this.refreshToken){
+      this.route.navigateByUrl('')
+      return false;
+    }
+    return true
+  }
+}
+
+export const CanActivate: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+) => {
+  return inject(AuthServiceService).isUserLoged()
+}
+
+
+export const CanUserAuth: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+) => {
+  return inject(AuthServiceService).canUserAuth()
 }
