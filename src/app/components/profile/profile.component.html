@@ -3,15 +3,12 @@
     <div class="profileInfo">
       <div class="imgInfos">
         <div class="imgContainer">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/021/548/095/non_2x/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg"
-            alt=""
-          />
+          <img *ngIf="user$ | async as user" [src]="user.avatar" alt="" />
         </div>
-        <div class="infos">
-          <h1>name</h1>
-          <h1>last name</h1>
-          <h1>email</h1>
+        <div class="infos" *ngIf="user$ | async as user">
+          <h1>{{ user.firstName }}</h1>
+          <h1>{{ user.lastName }}</h1>
+          <h1>{{ user.email }}</h1>
         </div>
       </div>
       <div class="moreInfo">
