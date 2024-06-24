@@ -21,23 +21,31 @@
   </section>
   <section class="todo">
     <div class="todoInputs">
-      <form action="">
+      <form action="" (submit)="addTask()">
         <label for="title">Enter Title</label>
         <input
           type="text"
           id="title"
+          name="title"
           placeholder="Todo title"
           class="titleInput"
+          [(ngModel)]="newTask.title"
         />
         <label for="description" class="topRes">Enter description</label>
         <textarea
           name="textarea"
           id="description"
+          name="description"
           class="description"
+          [(ngModel)]="newTask.description"
           placeholder="Enter description"
         ></textarea>
         <div class="btnBox">
           <button class="btnStyle">Add Task</button>
+          <app-task-card
+            *ngFor="let task of tasks"
+            [task]="task"
+          ></app-task-card>
         </div>
       </form>
     </div>
