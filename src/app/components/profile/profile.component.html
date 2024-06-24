@@ -13,7 +13,7 @@
       </div>
       <div class="moreInfo">
         <div class="midContainer">
-          <h2>current tasks ()</h2>
+          <h2>current tasks {{ tasks.length }}</h2>
           <h2>complated tasks ()</h2>
         </div>
       </div>
@@ -42,10 +42,6 @@
         ></textarea>
         <div class="btnBox">
           <button class="btnStyle">Add Task</button>
-          <app-task-card
-            *ngFor="let task of tasks"
-            [task]="task"
-          ></app-task-card>
         </div>
       </form>
     </div>
@@ -54,6 +50,11 @@
   <section class="todoCards">
     <div class="headerText">
       <h1>your todo list</h1>
+      <app-task-card
+        *ngFor="let task of tasks"
+        [task]="task"
+        (remove)="removeTask($event)"
+      ></app-task-card>
     </div>
   </section>
 </main>

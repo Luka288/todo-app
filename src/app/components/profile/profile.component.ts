@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { TaskCardComponent } from "../task-card/task-card.component";
 import { user } from '../shared';
 import { FormsModule } from '@angular/forms';
+import { T } from '@angular/cdk/keycodes';
 
 @Component({
     selector: 'app-profile',
@@ -31,5 +32,9 @@ export default class ProfileComponent {
       this.newTask.title = ''
       this.newTask.description = ''
     }
+  }
+
+  removeTask(index: number){
+    this.tasks.splice(index, 1)
   }
 }
