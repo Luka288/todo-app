@@ -1,0 +1,25 @@
+// div.card {
+//   div.card-body {
+//     button {
+//       width: 50px;
+//     }
+//   }
+// }
+
+section.card1 {
+  background-color: #323433;
+  width: 300px;
+  height: auto;
+  margin: auto;
+  border-radius: 15px;
+
+  .titleSection {
+    text-align: center;
+    color: white;
+  }
+
+  .descriptionSection {
+    color: white;
+    padding-left: 10px;
+  }
+}

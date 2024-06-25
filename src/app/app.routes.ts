@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { CanActivate, CanUserAuth } from './components/shared/services/auth-service.service';
+import { TaskCardComponent } from './components/task-card/task-card.component';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,11 @@ export const routes: Routes = [
         loadComponent: () => import('./components/profile/profile.component'),
         title: 'Todo | Profile',
         canActivate: [CanActivate],
+    },
+    {
+        path: 'card',
+        component: TaskCardComponent,
+        title: 'Todo | Card Testing'
     },
     {
         path: '**',
