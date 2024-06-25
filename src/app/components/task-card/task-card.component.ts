@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, input } from '@angular/core';
 
 @Component({
   selector: 'app-task-card',
@@ -12,8 +12,15 @@ export class TaskCardComponent {
   @Input() task!: { title: string, description: string };
   @Input() index!: number;
   @Output() remove = new EventEmitter<number>();
+  @Output() complete = new EventEmitter<number>();
 
+  complatedTasks: string[] = []
+ 
   taskRemove(){
     this.remove.emit(this.index)
+  }
+
+  complateTask(){
+    this.complete.emit(this.index);
   }
 }

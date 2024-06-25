@@ -14,7 +14,7 @@
       <div class="moreInfo">
         <div class="midContainer">
           <h2>current tasks {{ tasks.length }}</h2>
-          <h2>complated tasks ()</h2>
+          <h2>complated tasks {{ completedTasks.length }}</h2>
         </div>
       </div>
     </div>
@@ -54,6 +54,7 @@
         *ngFor="let task of tasks"
         [task]="task"
         (remove)="removeTask($event)"
+        (complete)="taskComplete($event)"
       ></app-task-card>
     </div>
   </section>

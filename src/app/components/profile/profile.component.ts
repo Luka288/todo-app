@@ -21,6 +21,7 @@ export default class ProfileComponent {
   user$: Observable<user | null>;
   newTask = { title: '', description: '' };
   tasks: { title: string; description: string }[] = [];
+  completedTasks: { title: string; description: string  }[] = [];
 
   constructor(private authService: AuthServiceService) {
     this.user$ = this.authService.user$;
@@ -36,5 +37,10 @@ export default class ProfileComponent {
 
   removeTask(index: number){
     this.tasks.splice(index, 1)
+  }
+
+  taskComplete(index: number){
+    this.completedTasks.push(this.tasks[index]);
+    this.removeTask(index)
   }
 }
