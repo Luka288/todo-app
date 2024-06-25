@@ -6,8 +6,8 @@
           <img *ngIf="user$ | async as user" [src]="user.avatar" alt="" />
         </div>
         <div class="infos" *ngIf="user$ | async as user">
-          <h1>{{ user.firstName }}</h1>
-          <h1>{{ user.lastName }}</h1>
+          <h1 style="text-transform: capitalize">{{ user.firstName }}</h1>
+          <h1 style="text-transform: capitalize">{{ user.lastName }}</h1>
           <h1>{{ user.email }}</h1>
         </div>
       </div>
@@ -50,12 +50,15 @@
   <section class="todoCards">
     <div class="headerText">
       <h1>your todo list</h1>
-      <app-task-card
-        *ngFor="let task of tasks"
-        [task]="task"
-        (remove)="removeTask($event)"
-        (complete)="taskComplete($event)"
-      ></app-task-card>
+      <div class="taskContainer">
+        <app-task-card
+          *ngFor="let task of tasks; let i = index"
+          [task]="task"
+          [index]="i"
+          (remove)="removeTask($event)"
+          (complete)="taskComplete($event)"
+        ></app-task-card>
+      </div>
     </div>
   </section>
 </main>

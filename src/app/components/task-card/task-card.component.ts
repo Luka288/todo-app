@@ -14,6 +14,7 @@ export class TaskCardComponent {
   @Output() remove = new EventEmitter<number>();
   @Output() complete = new EventEmitter<number>();
 
+
   complatedTasks: string[] = []
  
   taskRemove(){

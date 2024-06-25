@@ -9,17 +9,59 @@
 section.card1 {
   background-color: #323433;
   width: 300px;
+  max-width: 300px;
   height: auto;
   margin: auto;
   border-radius: 15px;
+  padding-bottom: 10px;
 
   .titleSection {
     text-align: center;
     color: white;
+    max-width: 100%;
+    word-wrap: break-word;
+
+    h1 {
+      width: 300px;
+      max-width: 300px;
+    }
   }
 
   .descriptionSection {
+    max-width: 100%;
     color: white;
     padding-left: 10px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+
+    h3 {
+      width: 300px;
+      max-width: 300px;
+    }
+  }
+
+  .buttons {
+    padding-left: 15px;
+    color: white;
+    display: flex;
+    gap: 10px;
+
+    i.delete {
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+    i.delete:hover {
+      color: #b22222;
+      transition: all 0.5s;
+    }
+
+    i.check {
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+    i.check:hover {
+      color: #1dcb44;
+      transition: all 0.5s;
+    }
   }
 }

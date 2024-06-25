@@ -36,7 +36,8 @@ export default class ProfileComponent {
   }
 
   removeTask(index: number){
-    this.tasks.splice(index, 1)
+      this.tasks.splice(index, 1)
+      console.log(index)
   }
 
   taskComplete(index: number){
