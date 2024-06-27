@@ -24,13 +24,14 @@ main {
         img {
           width: 200px;
           height: 200px;
+          border: 2px solid rgb(189, 186, 186);
+          border-radius: 90px;
         }
         .infos {
           display: flex;
           flex-direction: column;
 
           h1 {
-            // text-transform: capitalize;
             font-weight: 320;
           }
         }
@@ -60,7 +61,9 @@ main {
 
     .todoInputs {
       width: 50%;
-      height: 350px;
+      height: 100%;
+      padding-top: 10px;
+      display: grid;
 
       form {
         display: flex;
@@ -110,6 +113,14 @@ main {
           color: white;
           transition: ease-in-out 0.1s;
         }
+      }
+
+      .modal-content {
+        background-color: #001824;
+      }
+
+      .modalBtn {
+        width: 300px;
       }
     }
   }

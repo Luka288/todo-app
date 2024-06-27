@@ -3,12 +3,23 @@
     <div class="profileInfo">
       <div class="imgInfos">
         <div class="imgContainer">
-          <img *ngIf="user$ | async as user" [src]="user.avatar" alt="" />
+          <img
+            *ngIf="user$ | async as user"
+            [src]="user.avatar"
+            alt=""
+            class="border"
+          />
         </div>
         <div class="infos" *ngIf="user$ | async as user">
-          <h1 style="text-transform: capitalize">{{ user.firstName }}</h1>
-          <h1 style="text-transform: capitalize">{{ user.lastName }}</h1>
-          <h1>{{ user.email }}</h1>
+          <h1 style="text-transform: capitalize">
+            Fist name :
+            <span style="color: rgb(212, 118, 51)">{{ user.firstName }}</span>
+          </h1>
+          <h1 style="text-transform: capitalize">
+            Last name :
+            <span style="color: rgb(212, 118, 51)">{{ user.lastName }}</span>
+          </h1>
+          <h1>Email address : {{ user.email }}</h1>
         </div>
       </div>
       <div class="moreInfo">
@@ -21,29 +32,76 @@
   </section>
   <section class="todo">
     <div class="todoInputs">
-      <form action="" (submit)="addTask()">
-        <label for="title">Enter Title</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          placeholder="Todo title"
-          class="titleInput"
-          [(ngModel)]="newTask.title"
-        />
-        <label for="description" class="topRes">Enter description</label>
-        <textarea
-          name="textarea"
-          id="description"
-          name="description"
-          class="description"
-          [(ngModel)]="newTask.description"
-          placeholder="Enter description"
-        ></textarea>
-        <div class="btnBox">
-          <button class="btnStyle">Add Task</button>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">
+                Create Task
+              </h1>
+              <button
+                type="button"
+                class="btn-close bg-light"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form action="" (submit)="addTask()">
+                <label for="title">Enter Title</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="Todo title"
+                  class="titleInput"
+                  [(ngModel)]="newTask.title"
+                />
+                <label for="description" class="topRes"
+                  >Enter description</label
+                >
+                <textarea
+                  name="textarea"
+                  id="description"
+                  name="description"
+                  class="description"
+                  [(ngModel)]="newTask.description"
+                  placeholder="Enter description"
+                ></textarea>
+                <div class="btnBox">
+                  <button class="btnStyle">Add Task</button>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary bg-danger"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <!-- <button type="button" class="btn btn-primary">
+                Save changes
+              </button> -->
+            </div>
+          </div>
         </div>
-      </form>
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary modalBtn"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Create Task !
+      </button>
     </div>
   </section>
   @if (tasks.length > 0) {

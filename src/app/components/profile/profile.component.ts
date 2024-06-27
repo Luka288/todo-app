@@ -9,13 +9,14 @@ import { TaskCardComponent } from "../task-card/task-card.component";
 import { user } from '../shared';
 import { FormsModule } from '@angular/forms';
 import { T } from '@angular/cdk/keycodes';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-profile',
     standalone: true,
     templateUrl: './profile.component.html',
     styleUrl: './profile.component.scss',
-    imports: [FormsModule, MatButtonModule, MatDividerModule, MatIconModule, CommonModule, TaskCardComponent]
+    imports: [MatSnackBarModule, FormsModule, MatButtonModule, MatDividerModule, MatIconModule, CommonModule, TaskCardComponent]
 })
 export default class ProfileComponent {
   user$: Observable<user | null>;
@@ -66,4 +67,5 @@ export default class ProfileComponent {
   saveCompletedTasks() {
     localStorage.setItem('completedTasks', JSON.stringify(this.completedTasks));
   }
+
 }
