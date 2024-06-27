@@ -25,6 +25,17 @@ export default class ProfileComponent {
 
   constructor(private authService: AuthServiceService) {
     this.user$ = this.authService.user$;
+
+
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      this.tasks = JSON.parse(storedTasks);
+    }
+
+    const storedCompletedTasks = localStorage.getItem('completedTasks');
+    if (storedCompletedTasks) {
+      this.completedTasks = JSON.parse(storedCompletedTasks);
+    }
   }
 
   addTask(){
@@ -33,15 +44,26 @@ export default class ProfileComponent {
       this.newTask.title = ''
       this.newTask.description = ''
     }
+    this.saveTasks();
   }
 
   removeTask(index: number){
       this.tasks.splice(index, 1)
       console.log(index)
+      this.saveTasks();
   }
 
   taskComplete(index: number){
     this.completedTasks.push(this.tasks[index]);
     this.removeTask(index)
+    this.saveCompletedTasks();
+  }
+
+  saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+
+  saveCompletedTasks() {
+    localStorage.setItem('completedTasks', JSON.stringify(this.completedTasks));
   }
 }
