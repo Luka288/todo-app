@@ -99,13 +99,17 @@ main {
       }
 
       .btnBox {
+        height: 100%;
         padding-top: 30px;
-        .btnStyle {
-          width: 125px;
-          height: 40px;
-          border-radius: 3px;
-          border: none;
-          transition: ease-in-out 0.1s;
+
+        .btn {
+          .btnStyle {
+            width: 125px;
+            height: 40px;
+            border-radius: 3px;
+            border: none;
+            transition: ease-in-out 0.1s;
+          }
         }
 
         .btnStyle:hover {
@@ -119,8 +123,15 @@ main {
         background-color: #001824;
       }
 
-      .modalBtn {
-        width: 300px;
+      .buttonBox {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 150px;
+
+        .modalBtn {
+          width: 300px;
+        }
       }
     }
   }
@@ -131,6 +142,7 @@ main {
     height: auto;
     background-color: #001824;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
     .headerText {
@@ -142,51 +154,79 @@ main {
       display: flex;
       align-items: flex-start;
       flex-direction: row;
+      padding-left: 10%;
       gap: 30px;
     }
-  }
-}
 
-@media (max-width: 425px) {
-  main {
-    section.wrapper {
-      .profileInfo {
-        height: 450px;
-        .imgInfos {
-          display: flex;
-          flex-direction: column;
+    .modal-content {
+      background-color: #001824;
+      height: 500px;
 
-          .imgContainer {
+      .modal-body {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .gridWrapper {
+          width: 100%;
+          height: 100%;
+          display: grid;
+          grid-template-columns: repeat(3, 0fr);
+          justify-content: left;
+          gap: 30px;
+
+          .wrapper {
+            width: 100%;
             display: flex;
             justify-content: center;
-          }
-        }
-
-        .moreInfo {
-          .midContainer {
-            padding-top: 20px;
-            text-align: center;
+            align-items: center;
           }
         }
       }
     }
+  }
 
-    section.todo {
-      .todoInputs {
-        form {
-          .titleInput {
-            width: 230px;
+  @media (max-width: 425px) {
+    main {
+      section.wrapper {
+        .profileInfo {
+          height: 450px;
+          .imgInfos {
+            display: flex;
+            flex-direction: column;
+
+            .imgContainer {
+              display: flex;
+              justify-content: center;
+            }
           }
 
-          .description {
-            width: 230px;
+          .moreInfo {
+            .midContainer {
+              padding-top: 20px;
+              text-align: center;
+            }
           }
         }
       }
-    }
 
-    .todoCards {
-      padding-top: 25%;
+      section.todo {
+        .todoInputs {
+          form {
+            .titleInput {
+              width: 230px;
+            }
+
+            .description {
+              width: 230px;
+            }
+          }
+        }
+      }
+
+      .todoCards {
+        padding-top: 25%;
+      }
     }
   }
 }
