@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, input } from '@angular/core';
+import ProfileComponent from '../profile/profile.component';
 
 @Component({
   selector: 'app-task-card',

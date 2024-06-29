@@ -7,7 +7,7 @@
             *ngIf="user$ | async as user"
             [src]="user.avatar"
             alt=""
-            class="border"
+            class="border changeAvatar"
           />
         </div>
         <div class="infos" *ngIf="user$ | async as user">
@@ -26,6 +26,7 @@
         <div class="midContainer">
           <h2>current tasks {{ tasks.length }}</h2>
           <h2>complated tasks {{ completedTasks.length }}</h2>
+          <h2>Rank : {{ score }} @if (score > 3) { {{ ranks.silver }}}</h2>
         </div>
       </div>
     </div>
@@ -115,7 +116,11 @@
           Check your tasks
           <span class="badge text-bg-secondary">{{ tasks.length }}</span>
         </button>
+        <button (click)="removeComplatedTasks()">Clear</button>
+
         }@else {
+        <button (click)="removeComplatedTasks()">Clear</button>
+
         <button
           type="button"
           class="btn btn-primary"
@@ -132,9 +137,6 @@
       </div>
     </div>
   </section>
-  <!--  -->
-
-  <!--  -->
   <section class="todoCards">
     <div
       class="modal fade"
@@ -145,7 +147,7 @@
       aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-xl">
+      <div class="modal-dialog modal-xl modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="staticBackdropLabel">
@@ -182,18 +184,5 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="headerText">
-      <h1>your todo list</h1>
-    </div>
-    <div class="taskContainer">
-      <app-task-card
-        *ngFor="let task of tasks; let i = index"
-        [task]="task"
-        [index]="i"
-        (remove)="removeTask($event)"
-        (complete)="taskComplete($event)"
-      ></app-task-card>
-    </div> -->
   </section>
 </main>
