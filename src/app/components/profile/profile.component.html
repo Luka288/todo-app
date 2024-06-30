@@ -26,7 +26,28 @@
         <div class="midContainer">
           <h2>current tasks {{ tasks.length }}</h2>
           <h2>complated tasks {{ completedTasks.length }}</h2>
-          <h2>Rank : {{ score }} @if (score > 3) { {{ ranks.silver }}}</h2>
+          <h2 [ngSwitch]="score">
+            Rank : {{ score }}
+            <span *ngSwitchCase="20"
+              >{{ ranks.bronze }}
+              <span class="nextC">next rank {{ ranks.silver }}</span></span
+            >
+            <span *ngSwitchCase="50"
+              >{{ ranks.silver }}
+              <span class="nextC">next rank {{ ranks.gold }}</span></span
+            >
+            <span *ngSwitchCase="100"
+              >{{ ranks.gold }}
+              <span class="nextC">next rank {{ ranks.platinum }}</span></span
+            >
+            <span *ngSwitchCase="150"
+              >{{ ranks.platinum }}
+              <span class="nextC">next rank {{ ranks.diamond }}</span></span
+            >
+            <span *ngSwitchCase="200"
+              >{{ ranks.diamond }} <span class="nextC">MAX LEVEL</span></span
+            >
+          </h2>
         </div>
       </div>
     </div>

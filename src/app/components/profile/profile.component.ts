@@ -29,6 +29,14 @@ export default class ProfileComponent {
 
   score = 0;
 
+  ranks = {
+    silver: 'Silver',
+    bronze: 'Bronze',
+    gold: 'Gold',
+    platinum: 'Platinum',
+    diamond: 'Diamond'
+  }
+  
   constructor(private authService: AuthServiceService, private cdr: ChangeDetectorRef) {
     this.user$ = this.authService.user$;
 
@@ -112,9 +120,4 @@ export default class ProfileComponent {
     localStorage.setItem('score', JSON.stringify(this.score));
   }
 
-
-  ranks = {
-    silver : 'serjanti',
-    bronze : 'master serjanti',
-  }
 }
