@@ -24,10 +24,10 @@
       </div>
       <div class="moreInfo">
         <div class="midContainer">
-          <h2>current tasks {{ tasks.length }}</h2>
-          <h2>complated tasks {{ completedTasks.length }}</h2>
-          <h2 [ngSwitch]="score">
-            Rank : {{ score }}
+          <h2 class="fontRes">current tasks {{ tasks.length }}</h2>
+          <h2 class="fontRes">complated tasks {{ completedTasks.length }}</h2>
+          <h2 [ngSwitch]="score" class="fontRes">
+            Score : {{ score }}
             <span *ngSwitchCase="20"
               >{{ ranks.bronze }}
               <span class="nextC">next rank {{ ranks.silver }}</span></span
@@ -111,9 +111,6 @@
               >
                 Close
               </button>
-              <!-- <button type="button" class="btn btn-primary">
-                Save changes
-              </button> -->
             </div>
           </div>
         </div>
@@ -121,7 +118,7 @@
       <div class="buttonBox">
         <button
           type="button"
-          class="btn btn-primary modalBtn"
+          class="btn btn-primary modalBtn createBtn"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
@@ -137,10 +134,10 @@
           Check your tasks
           <span class="badge text-bg-secondary">{{ tasks.length }}</span>
         </button>
-        <button (click)="removeComplatedTasks()">Clear</button>
+        <!-- <button (click)="removeComplatedTasks()">Clear</button> -->
 
         }@else {
-        <button (click)="removeComplatedTasks()">Clear</button>
+        <!-- <button (click)="removeComplatedTasks()">Clear</button> -->
 
         <button
           type="button"
@@ -176,7 +173,7 @@
             </h1>
             <button
               type="button"
-              class="btn-close"
+              class="btn-close bg-light"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>

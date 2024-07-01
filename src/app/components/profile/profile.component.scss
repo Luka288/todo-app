@@ -238,3 +238,53 @@ main {
     }
   }
 }
+
+@media (max-width: 768px) {
+  section.todo {
+    .todoInputs {
+      .buttonBox {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  section.wrapper {
+    .profileInfo {
+      .imgInfos {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .nextC {
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .todo {
+    padding-right: 35%;
+  }
+
+  .fontRes {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  section.todo {
+    .todoInputs {
+      .buttonBox {
+        .createBtn {
+          width: 150px !important;
+        }
+      }
+    }
+  }
+}
