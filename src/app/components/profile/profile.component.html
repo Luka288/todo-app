@@ -28,23 +28,23 @@
           <h2 class="fontRes">complated tasks {{ completedTasks.length }}</h2>
           <h2 [ngSwitch]="score" class="fontRes">
             Score : {{ score }}
-            <span *ngSwitchCase="20"
+            <span *ngIf="score >= 20 && score < 50"
               >{{ ranks.bronze }}
               <span class="nextC">next rank {{ ranks.silver }}</span></span
             >
-            <span *ngSwitchCase="50"
+            <span *ngIf="score >= 50 && score < 100"
               >{{ ranks.silver }}
               <span class="nextC">next rank {{ ranks.gold }}</span></span
             >
-            <span *ngSwitchCase="100"
+            <span *ngIf="score >= 100 && score < 150"
               >{{ ranks.gold }}
               <span class="nextC">next rank {{ ranks.platinum }}</span></span
             >
-            <span *ngSwitchCase="150"
+            <span *ngIf="score >= 150 && score < 200"
               >{{ ranks.platinum }}
               <span class="nextC">next rank {{ ranks.diamond }}</span></span
             >
-            <span *ngSwitchCase="200"
+            <span *ngIf="score == 200"
               >{{ ranks.diamond }} <span class="nextC">MAX LEVEL</span></span
             >
           </h2>
@@ -134,10 +134,9 @@
           Check your tasks
           <span class="badge text-bg-secondary">{{ tasks.length }}</span>
         </button>
-        <!-- <button (click)="removeComplatedTasks()">Clear</button> -->
-
+        <button (click)="removeComplatedTasks()">Clear</button>
         }@else {
-        <!-- <button (click)="removeComplatedTasks()">Clear</button> -->
+        <button (click)="removeComplatedTasks()">Clear</button>
 
         <button
           type="button"
