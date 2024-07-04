@@ -1,18 +1,18 @@
 import { navigationInter } from "../interfaces/navigation-inter";
 
 export const NavigationLeft: navigationInter[] = [
-    {
-        title: 'Home',
-        path: '',
-    },
-    {
-        title: 'Features',
-        path: '',
-    },
-    {
-        title: 'Pricing',
-        path: '',
-    },
+    // {
+    //     title: 'Home',
+    //     path: '',
+    // },
+    // {
+    //     title: 'Features',
+    //     path: '',
+    // },
+    // {
+    //     title: 'Pricing',
+    //     path: '',
+    // },
 ];
 
 export const NavigationRight: navigationInter[] = [
@@ -46,18 +46,18 @@ export const NavigationRightAfter: navigationInter[] = [
 ]
 
 export const NavigationLeftAfter: navigationInter[] = [
-    {
-        title: 'Home',
-        path: '',
-    },
-    {
-        title: 'Features',
-        path: '',
-    },
-    {
-        title: 'Pricing',
-        path: '',
-    },
+    // {
+    //     title: 'Home',
+    //     path: '',
+    // },
+    // {
+    //     title: 'Features',
+    //     path: '',
+    // },
+    // {
+    //     title: 'Pricing',
+    //     path: '',
+    // },
 ]
 
 // export const BeforeAuth: navigationInter[] = [
