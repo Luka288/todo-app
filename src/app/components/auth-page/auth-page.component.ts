@@ -77,6 +77,7 @@ export default class AuthPageComponent {
     this.auth.register(user).pipe(tap(user => {
       if(user._id){
         this.sweetAlert.alert('success', 'success', 'success')
+        this.verifyAsUser(user.email)
         this.tabIndex = 0;
       }
       this.signUpForm.reset()
@@ -110,5 +111,11 @@ export default class AuthPageComponent {
         return EMPTY;
       }),
     ).subscribe()
+  }
+
+  verifyAsUser(email: string){
+    this.auth.verifyEmail(email).subscribe((res) => {
+      console.log("sending verify!")
+    })
   }
 }

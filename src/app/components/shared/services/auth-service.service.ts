@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit, inject } from '@angular/core';
-import { authEverset, loginEverest } from '../consts';
+import { authEverset, everest, loginEverest } from '../consts';
 import { authInter, excludeUser, user } from '../interfaces/auth-interface';
 import { BehaviorSubject, Observable, pipe, tap } from 'rxjs';
 import { LocalStorageKeys } from '../enums';
@@ -21,10 +21,14 @@ export class AuthServiceService  {
 
   readonly authUrl = authEverset;
   readonly loginUrl = loginEverest;
+  readonly mainAPI = everest
 
   constructor(){
     this.init();
   }
+
+  readonly #user$ = new BehaviorSubject<user | null>(null)
+  readonly user$ = this.#user$.asObservable();
 
   init(){
     if(this.accessToken && this.refreshToken) {
@@ -59,8 +63,16 @@ export class AuthServiceService  {
     this.user = null;
   }
 
-  readonly #user$ = new BehaviorSubject<user | null>(null)
-  readonly user$ = this.#user$.asObservable();
+  verifyEmail(email: string){
+    const headers = new HttpHeaders({
+      accept: '*/*',
+      'Content-Type': 'application/json',
+    })
+
+    const body = {email}
+    return this.http.post(`${this.mainAPI}/auth/verify_email`, body, {headers})
+  }
+
 
   get user(){
     return this.#user$.value;
